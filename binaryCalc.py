@@ -27,44 +27,16 @@ def getBinary():
     return binaryNum
 
 def binToDec(binaryNum):
-    check = 1
+    check = 0
     decimal = 0
-    while (binaryNum > 0):
-        if check == 1 and binaryNum%10 == 1:
-            decimal = decimal + 1
+    while binaryNum > 0:
+        if binaryNum%10 == 1:
+            decimal = decimal + (2**check)
             check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 2 and binaryNum%10 == 1:
-            decimal = decimal + 2
-            check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 3 and binaryNum%10 == 1:
-            decimal = decimal + 4
-            check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 4 and binaryNum%10 == 1:
-            decimal = decimal + 8
-            check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 5 and binaryNum%10 == 1:
-            decimal = decimal + 16
-            check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 6 and binaryNum%10 == 1:
-            decimal = decimal + 32
-            check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 7 and binaryNum%10 == 1:
-            decimal = decimal + 64
-            check = check + 1
-            binaryNum = binaryNum//10
-        elif check == 8 and binaryNum%10 == 1:
-            decimal = decimal + 128
-            check = check + 1
-            binaryNum = binaryNum//10
+            binaryNum = binaryNum // 10
         else:
-            check = check+1
-            binaryNum = binaryNum//10
+            check = check + 1
+            binaryNum = binaryNum // 10
     print(decimal)
     return
 
@@ -87,34 +59,8 @@ def getDecimal():
     return decimalNum
 
 def decToBin(decimal):
-    binary = 0
-    while decimal > 0:
-        if decimal >= 128:
-            decimal = decimal - 128
-            binary = binary + 10000000
-        elif decimal >= 64:
-            decimal = decimal - 64
-            binary = binary + 1000000
-        elif decimal >= 32:
-            decimal = decimal - 32
-            binary = binary + 100000
-        elif decimal >= 16:
-            decimal = decimal - 16
-            binary = binary + 10000
-        elif decimal >= 8:
-            decimal = decimal - 8
-            binary = binary + 1000
-        elif decimal >= 4:
-            decimal = decimal - 4
-            binary = binary + 100
-        elif decimal >= 2:
-            decimal = decimal - 2
-            binary = binary + 10
-        else:
-            decimal = decimal - 1
-            binary = binary + 1
-    print(binary)
-    return
+    print(bin(decimal).replace("0b", ""))
+    return 
 
 def main():
     while True:
